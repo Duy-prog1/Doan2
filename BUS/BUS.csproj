@@ -45,7 +45,10 @@
     <Compile Include="BanHangBUS.cs" />
     <Compile Include="ChiTietHoaDonBUS.cs" />
     <Compile Include="ChiTietKhuyenMaiBUS.cs" />
+    <Compile Include="ChiTietPhieuNhapBUS.cs" />
     <Compile Include="LoaiSanPhamBUS.cs" />
+    <Compile Include="NhaCungCapBUS.cs" />
+    <Compile Include="PhieuNhapBUS.cs" />
     <Compile Include="SanPhamBUS.cs" />
     <Compile Include="HoaDonBUS.cs" />
     <Compile Include="KhachHangBUS.cs" />

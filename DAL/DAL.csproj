@@ -109,7 +109,10 @@
     <Compile Include="BanHangDAL.cs" />
     <Compile Include="ChiTietHoaDonDAL.cs" />
     <Compile Include="ChiTietKhuyenMaiDAL.cs" />
+    <Compile Include="ChiTietPhieuNhapDAL.cs" />
     <Compile Include="LoaiSanPhamDAL.cs" />
+    <Compile Include="NhaCungCapDAL.cs" />
+    <Compile Include="PhieuNhapDAL.cs" />
     <Compile Include="SanPhamDAL.cs" />
     <Compile Include="DangNhapDAL.cs" />
     <Compile Include="DatabaseConnect.cs" />

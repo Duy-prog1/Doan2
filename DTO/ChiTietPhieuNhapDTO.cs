@@ -6,8 +6,23 @@ using System.Threading.Tasks;
 
 namespace DTO
 {
-    internal class ChiTietPhieuNhapDTO
+    public class ChiTietPhieuNhapDTO
     {
+        public int maPN { get; set; }
+        public string maSP { get; set; }
+        public float giaNhap { get; set; }
+        public int soLuong { get; set; }
+        public bool tinhTrang { get; set; }
 
+        public ChiTietPhieuNhapDTO() { }
+
+        public ChiTietPhieuNhapDTO(int maPN, string maSP, float giaNhap, int soLuong, bool tinhTrang)
+        {
+            this.maPN = maPN;
+            this.maSP = maSP;
+            this.giaNhap = giaNhap;
+            this.soLuong = soLuong;
+            this.tinhTrang = tinhTrang;
+        }
     }
 }

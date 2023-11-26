@@ -27,6 +27,11 @@ namespace BUS
             return dalSanPham.suaSanPham(sp);
         }
 
+        public bool tangSoLuongSanPham(string maSP, int soLuong)
+        {
+            return dalSanPham.tangSoLuongSanPham(maSP, soLuong);
+        }
+
         public bool xoaSanPham(string maSP)
         {
             return dalSanPham.xoaSanPham(maSP);

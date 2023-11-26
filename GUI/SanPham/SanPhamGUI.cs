@@ -64,16 +64,23 @@ namespace WindowsFormsApp1.SanPham
 
         private void btn_Xoa_Click(object sender, EventArgs e)
         {
-            DialogResult result = MessageBox.Show("Bạn có chắc chắn muốn xóa sản phẩm này không?", "Xóa sản phẩm", MessageBoxButtons.YesNo);
-            if (result == DialogResult.Yes)
+            if (grid_SanPham.SelectedRows[0].Cells[3].Value.ToString() == "0")
             {
-                string maSanPham = grid_SanPham.SelectedRows[0].Cells[0].Value.ToString();
-                spBus.xoaSanPham(maSanPham);
-                grid_SanPham.DataSource = spBus.getSanPham();
+                DialogResult result = MessageBox.Show("Bạn có chắc chắn muốn xóa sản phẩm này không?", "Xóa sản phẩm", MessageBoxButtons.YesNo);
+                if (result == DialogResult.Yes)
+                {
+                    string maSanPham = grid_SanPham.SelectedRows[0].Cells[0].Value.ToString();
+                    spBus.xoaSanPham(maSanPham);
+                    grid_SanPham.DataSource = spBus.getSanPham();
+                }
+                else
+                {
+                    return;
+                }
             }
             else
             {
-                return;
+                MessageBox.Show("Không thể xóa sản phẩm này");
             }
         }
         private void tb_Tim_TextChanged(object sender, EventArgs e)
