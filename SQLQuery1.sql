@@ -50,6 +50,7 @@ create table nhanVien(
 );
 create table phanQuyen(
 	maQuyen int not null primary key,
+	qLyTK bit,
 	qLyBH bit,
 	qLySP bit,
 	qLyNV bit,
@@ -89,7 +90,7 @@ create table CT_PhieuNhap(
 	tinhTrang bit
 );
 create table hoaDon(
-	maHD int not null primary key,
+	maHD int not null IDENTITY(1,1) primary key,
 	maNV nVarChar(13) foreign key references nhanVien(maNV),
 	maKH int foreign key references khachHang(maKH),
 	ngayLap datetime,

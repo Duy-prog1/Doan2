@@ -39,6 +39,10 @@ namespace WindowsFormsApp1
                     tableLayoutPanel3.Controls.RemoveAt(i);
                 }
             }
+            if (maQuyen == 0)
+            {
+                taiKhoanGUI =new TaiKhoanGUI();
+            }
             if (maQuyen == 2) //ban hang
             {
                 banHangGUI = new BanHangGUI();
@@ -104,6 +108,10 @@ namespace WindowsFormsApp1
                 pictureBoxes.Add(pictureBox2);
                 pictureBoxes.Add(pictureBox6);
                 pictureBoxes.Add(pictureBox7);
+            }
+            if (maQuyen == 0)
+            {
+                pictureBoxes.Add(pictureBox9);
             }
 
             foreach (PictureBox pictureBox in pictureBoxes)
