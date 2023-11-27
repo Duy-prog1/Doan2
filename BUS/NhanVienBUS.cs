@@ -13,6 +13,11 @@ namespace BUS
     {
         NhanVienDAL dalNhanVien = new NhanVienDAL();
 
+        public List<String> getDSNV()
+        {
+            return dalNhanVien.getDSNV();
+        }
+
         public List<NhanVienDTO> getList()
         {
             return dalNhanVien.getList();

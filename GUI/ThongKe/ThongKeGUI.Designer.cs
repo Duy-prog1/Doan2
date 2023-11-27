@@ -65,34 +65,12 @@
             System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series27 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.Windows.Forms.DataVisualization.Charting.Series series28 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series29 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series30 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series31 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series32 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series33 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series34 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series35 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series36 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series37 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series38 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series39 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.Windows.Forms.DataVisualization.Charting.Title title3 = new System.Windows.Forms.DataVisualization.Charting.Title();
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series40 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series29 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint2 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(1D, 1D);
-            System.Windows.Forms.DataVisualization.Charting.Series series41 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series42 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series43 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series44 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series45 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series46 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series47 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series48 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series49 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series50 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series51 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series52 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series30 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.Windows.Forms.DataVisualization.Charting.Title title4 = new System.Windows.Forms.DataVisualization.Charting.Title();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.chart2 = new System.Windows.Forms.DataVisualization.Charting.Chart();
@@ -342,7 +320,6 @@
             title2.Name = "Title1";
             title2.Text = "Thống kê sản phẩm theo";
             this.chart1.Titles.Add(title2);
-            this.chart1.Click += new System.EventHandler(this.chart1_Click);
             // 
             // tableLayoutPanel2
             // 
@@ -624,68 +601,13 @@
             series27.ChartArea = "ChartArea1";
             series27.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.StackedColumn;
             series27.Legend = "Legend1";
-            series27.Name = "Iphone";
+            series27.Name = "KH1";
             series28.ChartArea = "ChartArea1";
             series28.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.StackedColumn;
             series28.Legend = "Legend1";
-            series28.Name = "Samsung";
-            series29.ChartArea = "ChartArea1";
-            series29.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.StackedColumn;
-            series29.Legend = "Legend1";
-            series29.Name = "Google Pixel";
-            series30.ChartArea = "ChartArea1";
-            series30.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.StackedColumn;
-            series30.Legend = "Legend1";
-            series30.Name = "Huawei";
-            series31.ChartArea = "ChartArea1";
-            series31.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.StackedColumn;
-            series31.Legend = "Legend1";
-            series31.Name = "Xiaomi";
-            series32.ChartArea = "ChartArea1";
-            series32.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.StackedColumn;
-            series32.Legend = "Legend1";
-            series32.Name = "Realme";
-            series33.ChartArea = "ChartArea1";
-            series33.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.StackedColumn;
-            series33.Legend = "Legend1";
-            series33.Name = "OPPO";
-            series34.ChartArea = "ChartArea1";
-            series34.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.StackedColumn;
-            series34.Legend = "Legend1";
-            series34.Name = "Vivo";
-            series35.ChartArea = "ChartArea1";
-            series35.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.StackedColumn;
-            series35.Legend = "Legend1";
-            series35.Name = "OnePlus";
-            series36.ChartArea = "ChartArea1";
-            series36.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.StackedColumn;
-            series36.Legend = "Legend1";
-            series36.Name = "Asus";
-            series37.ChartArea = "ChartArea1";
-            series37.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.StackedColumn;
-            series37.Legend = "Legend1";
-            series37.Name = "Motorola";
-            series38.ChartArea = "ChartArea1";
-            series38.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.StackedColumn;
-            series38.Legend = "Legend1";
-            series38.Name = "Nokia";
-            series39.ChartArea = "ChartArea1";
-            series39.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.StackedColumn;
-            series39.Legend = "Legend1";
-            series39.Name = "HTC";
+            series28.Name = "KH2";
             this.chart3.Series.Add(series27);
             this.chart3.Series.Add(series28);
-            this.chart3.Series.Add(series29);
-            this.chart3.Series.Add(series30);
-            this.chart3.Series.Add(series31);
-            this.chart3.Series.Add(series32);
-            this.chart3.Series.Add(series33);
-            this.chart3.Series.Add(series34);
-            this.chart3.Series.Add(series35);
-            this.chart3.Series.Add(series36);
-            this.chart3.Series.Add(series37);
-            this.chart3.Series.Add(series38);
-            this.chart3.Series.Add(series39);
             this.chart3.Size = new System.Drawing.Size(776, 122);
             this.chart3.TabIndex = 1;
             this.chart3.Text = "chart3";
@@ -702,75 +624,20 @@
             this.chart4.Legends.Add(legend4);
             this.chart4.Location = new System.Drawing.Point(3, 3);
             this.chart4.Name = "chart4";
-            series40.ChartArea = "ChartArea1";
-            series40.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.StackedColumn;
-            series40.Legend = "Legend1";
-            series40.Name = "Iphone";
+            series29.ChartArea = "ChartArea1";
+            series29.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.StackedColumn;
+            series29.Legend = "Legend1";
+            series29.Name = "NV1";
             dataPoint2.Font = new System.Drawing.Font("Microsoft Sans Serif", 5.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataPoint2.Label = "okk";
             dataPoint2.LabelAngle = 0;
-            series40.Points.Add(dataPoint2);
-            series41.ChartArea = "ChartArea1";
-            series41.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.StackedColumn;
-            series41.Legend = "Legend1";
-            series41.Name = "Samsung";
-            series42.ChartArea = "ChartArea1";
-            series42.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.StackedColumn;
-            series42.Legend = "Legend1";
-            series42.Name = "Google Pixel";
-            series43.ChartArea = "ChartArea1";
-            series43.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.StackedColumn;
-            series43.Legend = "Legend1";
-            series43.Name = "Huawei";
-            series44.ChartArea = "ChartArea1";
-            series44.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.StackedColumn;
-            series44.Legend = "Legend1";
-            series44.Name = "Xiaomi";
-            series45.ChartArea = "ChartArea1";
-            series45.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.StackedColumn;
-            series45.Legend = "Legend1";
-            series45.Name = "Realme";
-            series46.ChartArea = "ChartArea1";
-            series46.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.StackedColumn;
-            series46.Legend = "Legend1";
-            series46.Name = "OPPO";
-            series47.ChartArea = "ChartArea1";
-            series47.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.StackedColumn;
-            series47.Legend = "Legend1";
-            series47.Name = "Vivo";
-            series48.ChartArea = "ChartArea1";
-            series48.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.StackedColumn;
-            series48.Legend = "Legend1";
-            series48.Name = "OnePlus";
-            series49.ChartArea = "ChartArea1";
-            series49.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.StackedColumn;
-            series49.Legend = "Legend1";
-            series49.Name = "Asus";
-            series50.ChartArea = "ChartArea1";
-            series50.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.StackedColumn;
-            series50.Legend = "Legend1";
-            series50.Name = "Motorola";
-            series51.ChartArea = "ChartArea1";
-            series51.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.StackedColumn;
-            series51.Legend = "Legend1";
-            series51.Name = "Nokia";
-            series52.ChartArea = "ChartArea1";
-            series52.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.StackedColumn;
-            series52.Legend = "Legend1";
-            series52.Name = "HTC";
-            this.chart4.Series.Add(series40);
-            this.chart4.Series.Add(series41);
-            this.chart4.Series.Add(series42);
-            this.chart4.Series.Add(series43);
-            this.chart4.Series.Add(series44);
-            this.chart4.Series.Add(series45);
-            this.chart4.Series.Add(series46);
-            this.chart4.Series.Add(series47);
-            this.chart4.Series.Add(series48);
-            this.chart4.Series.Add(series49);
-            this.chart4.Series.Add(series50);
-            this.chart4.Series.Add(series51);
-            this.chart4.Series.Add(series52);
+            series29.Points.Add(dataPoint2);
+            series30.ChartArea = "ChartArea1";
+            series30.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.StackedColumn;
+            series30.Legend = "Legend1";
+            series30.Name = "NV2";
+            this.chart4.Series.Add(series29);
+            this.chart4.Series.Add(series30);
             this.chart4.Size = new System.Drawing.Size(776, 122);
             this.chart4.TabIndex = 0;
             this.chart4.Text = "chart4";
@@ -807,25 +674,15 @@
             this.comboBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Items.AddRange(new object[] {
-            "Sản phẩm",
-            "Iphone",
-            "Samsung",
-            "Google Pixel",
-            "Huawei",
-            "Xiaomi",
-            "Realme",
-            "OPPO",
-            "Vivo",
-            "OnePlus",
-            "Asus",
-            "Motorola",
-            "Nokia",
-            "HTC",
+            "Nhân viên",
+            "NV1",
+            "NV2",
             "Toàn bộ SP"});
             this.comboBox1.Location = new System.Drawing.Point(3, 7);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(114, 24);
             this.comboBox1.TabIndex = 1;
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // comboBox2
             // 
@@ -848,11 +705,12 @@
             this.comboBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBox3.FormattingEnabled = true;
             this.comboBox3.Items.AddRange(new object[] {
-            "Danh mục SP (Chọn SP để hủy)"});
+            "Danh mục NV (Chọn NV để hủy)"});
             this.comboBox3.Location = new System.Drawing.Point(243, 7);
             this.comboBox3.Name = "comboBox3";
             this.comboBox3.Size = new System.Drawing.Size(224, 24);
             this.comboBox3.TabIndex = 3;
+            this.comboBox3.SelectedIndexChanged += new System.EventHandler(this.comboBox3_SelectedIndexChanged);
             // 
             // button1
             // 
@@ -864,6 +722,7 @@
             this.button1.TabIndex = 0;
             this.button1.Text = "Thống kê";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // flowLayoutPanel4
             // 
@@ -943,14 +802,14 @@
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(3, 6);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(50, 13);
+            this.label5.Size = new System.Drawing.Size(96, 13);
             this.label5.TabIndex = 0;
-            this.label5.Text = "Tổng thu";
+            this.label5.Text = "NV bán nhiều nhất";
             // 
             // textBox1
             // 
             this.textBox1.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.textBox1.Location = new System.Drawing.Point(59, 3);
+            this.textBox1.Location = new System.Drawing.Point(105, 3);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(100, 20);
             this.textBox1.TabIndex = 1;
@@ -959,16 +818,16 @@
             // 
             this.label6.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(165, 6);
+            this.label6.Location = new System.Drawing.Point(211, 6);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(49, 13);
+            this.label6.Size = new System.Drawing.Size(98, 13);
             this.label6.TabIndex = 2;
-            this.label6.Text = "Tổng chi";
+            this.label6.Text = "KH mua nhiều nhất";
             // 
             // textBox2
             // 
             this.textBox2.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.textBox2.Location = new System.Drawing.Point(220, 3);
+            this.textBox2.Location = new System.Drawing.Point(315, 3);
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(100, 20);
             this.textBox2.TabIndex = 3;
@@ -977,16 +836,16 @@
             // 
             this.label7.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(326, 6);
+            this.label7.Location = new System.Drawing.Point(421, 6);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(54, 13);
+            this.label7.Size = new System.Drawing.Size(57, 13);
             this.label7.TabIndex = 4;
-            this.label7.Text = "Lợi nhuận";
+            this.label7.Text = "Doanh thu";
             // 
             // textBox3
             // 
             this.textBox3.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.textBox3.Location = new System.Drawing.Point(386, 3);
+            this.textBox3.Location = new System.Drawing.Point(484, 3);
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(100, 20);
             this.textBox3.TabIndex = 5;

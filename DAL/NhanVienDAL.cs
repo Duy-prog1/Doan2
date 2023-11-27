@@ -17,6 +17,27 @@ namespace DAL
     public class NhanVienDAL:DatabaseConnect
     {
 
+        public List<String> getDSNV()
+        {
+            List<String> list = new List<String>();
+            String sSql = "select maNV from NhanVien where chucVu like '%Nhân viên%' order by maNV";
+            _conn.Open();
+            if (_conn.State == ConnectionState.Closed)
+            {
+                MessageBox.Show("Không thể kết nối DATABASE");
+                return null;
+            }
+            SqlCommand sqlCommand = new SqlCommand(sSql, _conn);
+            SqlDataReader reader = sqlCommand.ExecuteReader();
+            while (reader.Read())
+            {
+                list.Add(reader.GetString(0));
+            }
+            reader.Close();
+            _conn.Close();
+            return list;
+        }
+
         public List<NhanVienDTO> getList()
         {
             try

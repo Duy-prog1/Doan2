@@ -6,6 +6,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace DAL
 {
@@ -17,6 +18,26 @@ namespace DAL
             DataTable dt = new DataTable();
             da.Fill(dt);
             return dt;
+        }
+        public List<String> getDSLoaiSP()
+        {
+            List<String> list = new List<String>();
+            String sSql = "select tenLoai from loaisp order by tenLoai";
+            _conn.Open();
+            if (_conn.State == ConnectionState.Closed)
+            {
+                MessageBox.Show("Không thể kết nối DATABASE");
+                return null;
+            }
+            SqlCommand sqlCommand = new SqlCommand(sSql, _conn);
+            SqlDataReader reader = sqlCommand.ExecuteReader();
+            while (reader.Read())
+            {
+                list.Add(reader.GetString(0));
+            }
+            reader.Close();
+            _conn.Close();
+            return list;
         }
 
         public bool themSanPham(SanPhamDTO sp)
@@ -60,25 +81,6 @@ namespace DAL
                 cmd.Parameters.AddWithValue("@tinhTrang", sp.tinhTrang);
                 cmd.Parameters.AddWithValue("@maLoai", sp.maLoai);
 
-                if (cmd.ExecuteNonQuery() > 0)
-                    return true;
-            }
-            catch (Exception ex) { }
-            finally
-            {
-                _conn.Close();
-            }
-            return false;
-        }
-
-        public bool tangSoLuongSanPham(string maSP, int soLuong)
-        {
-            try
-            {
-                _conn.Open();
-                SqlCommand cmd = new SqlCommand("UPDATE sanPham SET soLuong = soLuong + @soLuong WHERE maSP = @maSP", _conn);
-                cmd.Parameters.AddWithValue("@maSP", maSP);
-                cmd.Parameters.AddWithValue("@soLuong", soLuong);
                 if (cmd.ExecuteNonQuery() > 0)
                     return true;
             }

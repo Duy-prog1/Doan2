@@ -75,14 +75,17 @@ namespace WindowsFormsApp1
         public void dangNhap()
         {
             tenDangNhap = textBox1.Text;
-            matKhau= textBox2.Text; if (string.IsNullOrEmpty(tenDangNhap))
+            matKhau= textBox2.Text; 
+            if (string.IsNullOrEmpty(tenDangNhap))
             {
                 MessageBox.Show("tên đăng nhập không được bỏ trống");
+                this.Visible = true;
                 return;
             }
             if (string.IsNullOrEmpty(matKhau))
             {
                 MessageBox.Show("mật khẩu không được bỏ trống");
+                this.Visible = true;
                 return;
             }
 
@@ -104,6 +107,7 @@ namespace WindowsFormsApp1
             else
             {
                 MessageBox.Show("tên đăng nhập hoặc mật khẩu không chính xác");
+                this.Visible = true;
             }
 
         }
@@ -142,6 +146,11 @@ namespace WindowsFormsApp1
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void DangNhapGUI_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

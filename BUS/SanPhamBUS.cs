@@ -12,6 +12,12 @@ namespace BUS
     public class SanPhamBUS
     {
         SanPhamDAL dalSanPham = new SanPhamDAL();
+
+
+        public List<String> getDSLoaiSP()
+        {
+            return dalSanPham.getDSLoaiSP();
+        }
         public DataTable getSanPham()
         {
             return dalSanPham.getSanPham();
@@ -25,11 +31,6 @@ namespace BUS
         public bool suaSanPham(SanPhamDTO sp)
         {
             return dalSanPham.suaSanPham(sp);
-        }
-
-        public bool tangSoLuongSanPham(string maSP, int soLuong)
-        {
-            return dalSanPham.tangSoLuongSanPham(maSP, soLuong);
         }
 
         public bool xoaSanPham(string maSP)
