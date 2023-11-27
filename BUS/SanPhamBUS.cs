@@ -13,6 +13,10 @@ namespace BUS
     {
         SanPhamDAL dalSanPham = new SanPhamDAL();
 
+        public bool tangSoLuongSanPham(string maSP, int soLuong)
+        {
+            return dalSanPham.tangSoLuongSanPham(maSP, soLuong);
+        }
 
         public List<String> getDSLoaiSP()
         {

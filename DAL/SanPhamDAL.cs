@@ -117,5 +117,23 @@ namespace DAL
             da.Fill(dt);
             return dt;
         }
+        public bool tangSoLuongSanPham(string maSP, int soLuong)
+        {
+            try
+            {
+                _conn.Open();
+                SqlCommand cmd = new SqlCommand("UPDATE sanPham SET soLuong = soLuong + @soLuong WHERE maSP = @maSP", _conn);
+                cmd.Parameters.AddWithValue("@maSP", maSP);
+                cmd.Parameters.AddWithValue("@soLuong", soLuong);
+                if (cmd.ExecuteNonQuery() > 0)
+                    return true;
+            }
+            catch (Exception ex) { }
+            finally
+            {
+                _conn.Close();
+            }
+            return false;
+        }
     }
 }
