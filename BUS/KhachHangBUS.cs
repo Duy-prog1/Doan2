@@ -32,5 +32,13 @@ namespace BUS
             return dalKhachHang.suakhachHang(tv);
         }
 
+        public KhachHangDTO findSdt(string sdt)
+        {
+            return dalKhachHang.findSdt(sdt);
+        }
+
+        public bool themKhachHang(KhachHangDTO tv){
+            return dalKhachHang.themKhachHang(tv);
+        }
     }
 }
