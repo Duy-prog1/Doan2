@@ -399,9 +399,6 @@ namespace WindowsFormsApp1
                 soLuongSanPham = 1;
                 numericUpDown1.Value = soLuongSanPham;
             }
-
-
-
         }
         // xóa giỏ hàng
         private void button4_Click(object sender, EventArgs e)
@@ -586,7 +583,6 @@ namespace WindowsFormsApp1
         }
         private void dataGridView2_DataError(object sender, DataGridViewDataErrorEventArgs e)
         {
-
             MessageBox.Show("Có lỗi xảy ra khi xử lý dữ liệu trong DataGridView.");
             e.Cancel = true;
         }

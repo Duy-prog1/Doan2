@@ -15,11 +15,9 @@ namespace DAL
         {
             SqlDataAdapter da = new SqlDataAdapter("SELECT maKH, tenKH, sdt, tichDiem, tongChi FROM khachHang ", _conn);
             DataTable dtKhachHang = new DataTable();
-
             da.Fill(dtKhachHang);
             return dtKhachHang;
         }
-
         public List<KhachHangDTO> getList()
         {
             try
