@@ -19,7 +19,7 @@ namespace WindowsFormsApp1
         NhanVienDTO nvDto;
         NhanVienBUS nvBus = new NhanVienBUS();
         TaiKhoanDTO tkDto;
-        TaiKhoanBUS tkBus = new TaiKhoanBUS();
+        //TaiKhoanBUS tkBus = new TaiKhoanBUS();
         DataGridView tblNv;
         bool kichHoatSua = false;
         public SuaThongTinNhanVienGUI(NhanVienDTO nvDto, DataGridView tblNv, TaiKhoanDTO tkDto)
@@ -62,7 +62,7 @@ namespace WindowsFormsApp1
 
             tbMaNv.Text = nvDto.maNv;
             tbTenNv.Text = nvDto.tenNv;
-            tbSdt.Text = nvDto.sdtNv;
+            tbSdt.Text = nvDto.sdtNv.Trim();
             rtbDiaChi.Text = nvDto.diaChiNv;
         //    rbNam.Checked = true;
             if (cbChucVu.Items.Contains(nvDto.chucVu))
@@ -144,8 +144,8 @@ namespace WindowsFormsApp1
                     this.nvDto.sdtNv = tbSdt.Text.Trim();
                     this.nvDto.chucVu = xuLychucVu();
                     this.nvDto.diaChiNv = rtbDiaChi.Text;
-                    updatePhanQuyen(nvDto.chucVu);
-                    if (nvBus.suaNhanVien(nvDto)&&tkBus.suaTk(tkDto))
+                    //updatePhanQuyen(nvDto.chucVu);
+                    if (nvBus.suaNhanVien(nvDto)/* &&tkBus.suaTk(tkDto)*/)
                     {
                         tblNv.DataSource = nvBus.getNhanVien();
                         MessageBox.Show("Sửa thành công!");
@@ -165,7 +165,7 @@ namespace WindowsFormsApp1
                 lbSdt.Text = "Vui lòng nhập thông tin vào!";
             }
         }
-        
+        /*
         public void updatePhanQuyen(string chucVu)
         {
             int maQuyen = 0;
@@ -183,7 +183,7 @@ namespace WindowsFormsApp1
             }
             tkDto.maQuyen = maQuyen;
         }
-
+        */
         public bool checkNgaySinhVaSdt()
         {
             if (CheckPhoneNumber(tbSdt.Text.Trim()) && !checkDate(mtbNgaySinh.Text, lbNgaySinh))
@@ -236,15 +236,16 @@ namespace WindowsFormsApp1
             // Kiểm tra trùng lặp với danh sách nhân viên
             foreach (NhanVienDTO nv in nvBus.getList())
             {
-                if (tbMaNv.Text.Equals(nv.maNv) && phoneNumber.Equals(nv.sdtNv))
+                if (phoneNumber.Equals(nv.sdtNv.Trim()))
                 {
-                    return true;
-                }
-                if (!tbMaNv.Text.Equals(nv.maNv) && phoneNumber.Equals(nv.sdtNv))
-                {
-                    lbSdt.Text = "Số điện thoại bị trùng";
-                    return false;
-                }
+                    if (!tbMaNv.Text.Equals(nv.maNv))
+                    {
+                        lbSdt.Text = "Số điện thoại bị trùng";
+                        return false;
+                    }
+                    else
+                        return true;
+                }              
             }
 
             // Kiểm tra sự trùng khớp của số điện thoại với biểu thức chính quy
@@ -294,11 +295,20 @@ namespace WindowsFormsApp1
             if (DateTime.TryParseExact(date, "dd/MM/yyyy", null, System.Globalization.DateTimeStyles.None, out ngayTrongMaskedTextBox))
             {
                 DateTime ngayHienTai = DateTime.Now;
+                DateTime ngay18Tuoi = ngayHienTai.AddYears(-18); // Tính ngày 18 tuổi trước ngày hiện tại
 
                 if (ngayHienTai > ngayTrongMaskedTextBox)
                 {
-                    lbngaySinh.Text = "";
-                    return true;
+                    if (ngayTrongMaskedTextBox <= ngay18Tuoi)
+                    {
+                        lbngaySinh.Text = "";
+                        return true;
+                    }
+                    else
+                    {
+                        lbngaySinh.Text = "Ngày sinh nhỏ hơn 18 tuổi!";
+                        return false;
+                    }
 
                     //    Console.WriteLine("Ngày hiện tại lớn hơn ngày trong chuỗi.");
                 }

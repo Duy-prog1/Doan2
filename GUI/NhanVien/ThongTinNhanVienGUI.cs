@@ -79,7 +79,7 @@ namespace WindowsFormsApp1
                 else
                     lbGioiTinh.Text = "";
                 if (tbTenNv.Text != "" && tbSdt.Text != "" && cbChucVu.SelectedIndex != 0 && (rbNam.Checked || rbNu.Checked) && maskedTextBox1.Text != "" && rtbDiaChi.Text != "" 
-                    && checkDate(maskedTextBox1.Text, lbNgaySinh) && CheckPhoneNumber(tbSdt.Text))
+                    && checkDate(maskedTextBox1.Text, lbNgaySinh) && CheckPhoneNumber(tbSdt.Text.Trim()))
                 {
                     lbDiaChi.Text = "";
                     lbTenNv.Text = "";
@@ -87,20 +87,20 @@ namespace WindowsFormsApp1
                     lbNgaySinh.Text = "";
                     lbGioiTinh.Text = "";
                     lbChucVu.Text = "";
-                    nvDto = new NhanVienDTO(capNhatId2(), tbTenNv.Text, XuLyGioiTinh(), XuLySdt(), rtbDiaChi.Text, xuLychucVu(), xuLyNgaySinh(), true);
+                    nvDto = new NhanVienDTO(capNhatId2(), tbTenNv.Text, XuLyGioiTinh(), tbSdt.Text.Trim(), rtbDiaChi.Text, xuLychucVu(), ChuyenDoiNgay1(maskedTextBox1.Text), true);
                     int maSo = nvBus.getList().Count + 1;
                     string tenDn = "nhanvien" + maSo;
                     string mk = "nhanvien" + maSo;
                     if (nvBus.themNhanVien(nvDto))
                     {
-                        if(taoTk(nvDto.chucVu, nvDto.maNv, tenDn, mk))
-                        {
+                       /* if(taoTk(nvDto.chucVu, nvDto.maNv, tenDn, mk))
+                        {*/
                             MessageBox.Show("thêm thành công");
                             tblNv.DataSource = nvBus.getNhanVien();
                             this.Dispose();
-                        }
+                      /*  }
                         else
-                            MessageBox.Show("thêm thất bại");
+                            MessageBox.Show("thêm thất bại");*/
 
                     }
                     else
@@ -170,6 +170,7 @@ namespace WindowsFormsApp1
 
         }
         
+        /*
         public string XuLySdt()
         {
             string sdt ="";
@@ -185,7 +186,7 @@ namespace WindowsFormsApp1
             string phonePattern = @"^0\d{9}$";
             foreach (NhanVienDTO nv in nvBus.getList())           
             {
-                    if (phoneNumber.Equals(nv.sdtNv))
+                    if (phoneNumber.Equals(nv.sdtNv.Trim()))
                     {                    
                         return false;
                     }
@@ -193,7 +194,7 @@ namespace WindowsFormsApp1
             // Kiểm tra sự trùng khớp của số điện thoại với biểu thức chính quy
             return Regex.IsMatch(phoneNumber, phonePattern);
         }
-
+        */
         public bool CheckPhoneNumber(string phoneNumber)
         {
             // Biểu thức chính quy kiểm tra số điện thoại với định dạng cụ thể (10 số và bắt đầu bằng số 0)
@@ -216,7 +217,7 @@ namespace WindowsFormsApp1
             // Kiểm tra trùng lặp với danh sách nhân viên
             foreach (NhanVienDTO nv in nvBus.getList())
             {
-                if (phoneNumber.Equals(nv.sdtNv))
+                if (phoneNumber.Equals(nv.sdtNv.Trim()))
                 {
                     lbSdt.Text = "Số điện thoại bị trùng!";
                     return false;
@@ -240,12 +241,21 @@ namespace WindowsFormsApp1
             if (DateTime.TryParseExact(date, "dd/MM/yyyy", null, System.Globalization.DateTimeStyles.None, out ngayTrongMaskedTextBox))
             {
                 DateTime ngayHienTai = DateTime.Now;
+                DateTime ngay18Tuoi = ngayHienTai.AddYears(-18); // Tính ngày 18 tuổi trước ngày hiện tại
 
                 if (ngayHienTai > ngayTrongMaskedTextBox)
                 {
-                    lbngaySinh.Text = "";
-                    return true;                 
-
+                    if (ngayTrongMaskedTextBox <= ngay18Tuoi)
+                    {
+                        lbngaySinh.Text = "";
+                        return true;
+                    }
+                    else
+                    {
+                        lbngaySinh.Text = "Ngày sinh nhỏ hơn 18 tuổi!";
+                        return false;
+                    }
+                                   
                     //    Console.WriteLine("Ngày hiện tại lớn hơn ngày trong chuỗi.");
                 }
                 else if (ngayHienTai <= ngayTrongMaskedTextBox)
@@ -263,6 +273,8 @@ namespace WindowsFormsApp1
             }
             return false;
         }
+
+     
         public string xuLychucVu()
         {
             string chucVu = "";
@@ -272,6 +284,8 @@ namespace WindowsFormsApp1
             }        
             return chucVu;
         }
+
+        /*
         public string xuLyNgaySinh()
         {
             string ngaySinh = "";
@@ -291,7 +305,8 @@ namespace WindowsFormsApp1
             }          
             return ChuyenDoiNgay(ngaySinh);
         }
-        public string ChuyenDoiNgay(string ngayTruoc)
+
+         public string ChuyenDoiNgay(string ngayTruoc)
         {         
             if (DateTime.TryParseExact(ngayTruoc, "dd/MM/yyyy h:mm:ss tt", null, System.Globalization.DateTimeStyles.None, out DateTime ngayGioSau))
             {
@@ -302,6 +317,20 @@ namespace WindowsFormsApp1
                 return "Ngày giờ không hợp lệ";
             }
         }
+
+        */
+        public string ChuyenDoiNgay1(string ngayTruoc)
+        {
+            if (DateTime.TryParseExact(ngayTruoc, "dd/MM/yyyy", null, System.Globalization.DateTimeStyles.None, out DateTime ngayGioSau))
+            {
+                return ngayGioSau.ToString("yyyy-MM-dd");
+            }
+            else
+            {
+                return "Ngày giờ không hợp lệ";
+            }
+        }
+       
         public string capNhatId2()
         {
             String maNv = "";
@@ -345,6 +374,7 @@ namespace WindowsFormsApp1
             this.Dispose();
         }
 
+        /*
         public bool taoTk(string chucVu, string maNv, string tenDn, string mk)
         {
             int maQuyen = 0;        
@@ -364,5 +394,6 @@ namespace WindowsFormsApp1
             tkDto = new TaiKhoanDTO(maNv, maQuyen,tenDn, mk, 1);
             return tkBus.themTaiKhoan(tkDto);
         }
+        */
     }
 }

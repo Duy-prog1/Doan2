@@ -40,7 +40,7 @@ namespace WindowsFormsApp1
             tbTenKh.Text = khDto.tenKh;
             tbTichDiem.Text = khDto.tichDiem.ToString();
             tbTongChi.Text = khDto.tongChi.ToString();
-            tbSdt.Text = khDto.sdtKh;
+            tbSdt.Text = khDto.sdtKh.Trim(); ;
         }
 
         private void btnThoat_Click(object sender, EventArgs e)
@@ -84,10 +84,7 @@ namespace WindowsFormsApp1
                     else
                         MessageBox.Show("Sửa thất bại!");
                 }
-                else
-                {
-                    lbSdt.Text = "Số điện thoại không đúng định dạng!";
-                }
+               
             }
             else if (tbSdt.Text.Equals(""))
             {
@@ -122,25 +119,40 @@ namespace WindowsFormsApp1
                 lbSdt.Text = "Số điện thoại không hợp lệ";
                 return false;
             }
+       
 
             // Kiểm tra trùng lặp với danh sách nhân viên
+            
             foreach (KhachHangDTO kh in khBus.getList())
             {
-                if (tbMaKh.Text.Equals(kh.maKh) && phoneNumber.Equals(kh.maKh))
+                if (phoneNumber.Equals(kh.sdtKh.Trim()))
+                {
+                    if (!tbMaKh.Text.Equals(kh.maKh + ""))
+                    {
+                        lbSdt.Text = "Số điện thoại bị trùng";
+                        return false;
+                    }
+                    else
+                        return true;
+                }
+               
+                /*
+                if (tbMaKh.Text.Equals(kh.maKh+"") && phoneNumber.Equals(kh.sdtKh.Trim()))
                 {
                     return true;
                 }
-                if (!tbMaKh.Text.Equals(kh.maKh) && phoneNumber.Equals(kh.maKh))
+                if (!tbMaKh.Text.Equals(kh.maKh+"") && phoneNumber.Equals(kh.sdtKh.Trim()))
                 {
                     lbSdt.Text = "Số điện thoại bị trùng";
                     return false;
                 }
+                */
             }
-
+            
             // Kiểm tra sự trùng khớp của số điện thoại với biểu thức chính quy
             if (!Regex.IsMatch(phoneNumber, phonePattern))
             {
-                lbSdt.Text = "Số điện thoại không đúng định dạng";
+                lbSdt.Text = "Số điện thoại không đúng định dạng 1!";
                 return false;
             }
             lbSdt.Text = "";
