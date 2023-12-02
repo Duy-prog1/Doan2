@@ -16,7 +16,7 @@ namespace DAL
         // 1 -- hiển thị danh sách sản phẩm
         public DataTable getDSSP()
         {
-            var cmd = new SqlCommand("SELECT maSP, tenSP, giaBan, maLoai,soLuong, img FROM sanPham WHERE soLuong>0", _conn);
+            var cmd = new SqlCommand("SELECT maSP, tenSP, giaBan, maLoai,soLuong FROM sanPham WHERE soLuong>0", _conn);
             var da = new SqlDataAdapter(cmd);
             var dt = new DataTable();
 
