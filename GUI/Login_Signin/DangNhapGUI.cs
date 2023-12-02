@@ -79,13 +79,11 @@ namespace WindowsFormsApp1
             if (string.IsNullOrEmpty(tenDangNhap))
             {
                 MessageBox.Show("tên đăng nhập không được bỏ trống");
-                this.Visible = true;
                 return;
             }
             if (string.IsNullOrEmpty(matKhau))
             {
                 MessageBox.Show("mật khẩu không được bỏ trống");
-                this.Visible = true;
                 return;
             }
 
@@ -94,7 +92,6 @@ namespace WindowsFormsApp1
 
             bool result=bus.dangNhap(tenDangNhap, matKhau);
             if(result && !maNV.Equals(""))
-
             {
                 MessageBox.Show("đăng nhập thành công");
                 List<bool> listQuyen = new List<bool>();
@@ -107,7 +104,6 @@ namespace WindowsFormsApp1
             else
             {
                 MessageBox.Show("tên đăng nhập hoặc mật khẩu không chính xác");
-                this.Visible = true;
             }
 
         }
@@ -134,7 +130,6 @@ namespace WindowsFormsApp1
             {
                 e.SuppressKeyPress = true;
                 dangNhap();
-                this.Hide();
             }
         }
 

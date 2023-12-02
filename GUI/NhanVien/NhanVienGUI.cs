@@ -1,6 +1,7 @@
 ﻿using BUS;
 using DTO;
 using System;
+using ClosedXML.Excel;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -97,6 +98,46 @@ namespace WindowsFormsApp1
         {
             nvBus.ThemDS();
             dataGridView1.DataSource = nvBus.getNhanVien();
+        }
+
+        public void ExportToExcel(DataGridView dataGridView)
+        {
+            using (var workbook = new XLWorkbook())
+            {
+                var worksheet = workbook.Worksheets.Add("Data");
+
+                // Lấy tên cột từ DataGridView và thêm vào file Excel
+                for (int i = 2; i <= dataGridView.Columns.Count; i++)
+                {
+                    worksheet.Cell(1, i).Value = dataGridView.Columns[i - 1].HeaderText;
+                }
+
+                // Thêm dữ liệu từ DataGridView vào file Excel
+                for (int i = 0; i < dataGridView.Rows.Count; i++)
+                {
+                    for (int j = 1; j < dataGridView.Columns.Count; j++)
+                    {
+                        worksheet.Cell(i + 2, j + 1).Value = dataGridView.Rows[i].Cells[j].Value?.ToString();
+                    }
+                }
+
+                // Lưu file Excel
+                SaveFileDialog saveDialog = new SaveFileDialog();
+                saveDialog.Filter = "Excel files (*.xlsx)|*.xlsx|All files (*.*)|*.*";
+                saveDialog.FilterIndex = 1;
+                saveDialog.RestoreDirectory = true;
+
+                if (saveDialog.ShowDialog() == DialogResult.OK)
+                {
+                    workbook.SaveAs(saveDialog.FileName);
+                    MessageBox.Show("Xuất file thành công!");
+                }
+            }
+        }
+
+        private void btnXuat_Click(object sender, EventArgs e)
+        {          
+              ExportToExcel(dataGridView1);
         }
     }
 
