@@ -1,6 +1,7 @@
 ﻿using BUS;
 using DTO;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,12 +13,15 @@ using System.Reflection.Emit;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WindowsFormsApp1.BanHang;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace WindowsFormsApp1
 {
     public partial class BanHangGUI : Form
     {
+        KhachHangDTO khachHangDTO;
+        List<KhachHangDTO> list = new List<KhachHangDTO>();
         private int soLuongSanPham = 1;
         private DataTable gioHang;
         BanHangBUS bus = new BanHangBUS();
@@ -66,7 +70,7 @@ namespace WindowsFormsApp1
             dataGridView1.DataSource = bus.getDSSP();
             // load combobox khách hàng
             DataTable dtKhachHang = khachHangBUS.getKhachHang();
-            if (dtKhachHang.Rows.Count > 0)
+          /*  if (dtKhachHang.Rows.Count > 0)
             {
                 dtKhachHang.Columns.Add("MaTenKH", typeof(string), "maKH + ' - ' + tenKH");
                 comboBox2.DataSource = dtKhachHang;
@@ -74,7 +78,7 @@ namespace WindowsFormsApp1
                 comboBox2.ValueMember = "maKH";
 
             }
-            comboBox2.SelectedIndex = -1;
+            comboBox2.SelectedIndex = -1;*/
         }
 
         // nút thanh toán
@@ -82,6 +86,7 @@ namespace WindowsFormsApp1
         {
             thanhToan();
             HienThiHoaDon();
+            gioHang.Clear();
         }
 
 
@@ -115,8 +120,10 @@ namespace WindowsFormsApp1
             textBox2.Text = "";
             textBox3.Text = "";
             textBox5.Text = "";
-            //textBox7.Text = "";
+            textBox7.Text = "";
+            textBox6.Text = "";
             textBox8.Text = "";
+            
         }
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -399,9 +406,6 @@ namespace WindowsFormsApp1
                 soLuongSanPham = 1;
                 numericUpDown1.Value = soLuongSanPham;
             }
-
-
-
         }
         // xóa giỏ hàng
         private void button4_Click(object sender, EventArgs e)
@@ -472,14 +476,16 @@ namespace WindowsFormsApp1
                 MessageBox.Show("Giỏ hàng đang trống. Vui lòng thêm sản phẩm vào giỏ hàng trước khi thanh toán.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
-
-            if (string.IsNullOrEmpty(comboBox2.Text))
+            string kh = textBox7.Text;
+           
+            if (string.IsNullOrEmpty(kh))
             {
                 MessageBox.Show("Vui lòng chọn mã khách hàng trước khi thanh toán.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
             DangNhapGUI d = new DangNhapGUI();
-            string maKhachHang = comboBox2.Text;
+            string maKhachHang = textBox7.Text;
+            
             if (decimal.TryParse(textBox8.Text, out decimal thanhTien))
             {
                 if (decimal.TryParse(textBox4.Text, out decimal soTienGiam))
@@ -496,9 +502,11 @@ namespace WindowsFormsApp1
                     thanhToan.TongTien = tongTien;
                     thanhToan.ngayLap = ngayLap;
                     thanhToan.ShowDialog();
-                    string maKhachHangHD = comboBox2.SelectedValue.ToString();
-                    if (int.TryParse(maKhachHangHD, out int maKH))
+                    string[] parts = textBox7.Text.Split('-');
+                   
+                    if (parts.Length == 2 && int.TryParse(parts[0], out int maKH))
                     {
+
                         HoaDonDTO hoaDon = new HoaDonDTO
                         {
                             maNV = d.MaNhanVien,
@@ -506,7 +514,6 @@ namespace WindowsFormsApp1
                             ngayLap = ngayLap,
                             tongTien = (float)thanhTien
                         };
-
                         if (hoaDonBus.TaoHoaDon(hoaDon))
                         {
                             int maHoaDon = hoaDonBus.GetMaHoaDonMoiNhat();
@@ -550,7 +557,17 @@ namespace WindowsFormsApp1
                         {
                             MessageBox.Show("Có lỗi khi tạo hóa đơn.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
+
+
                     }
+                    else
+                    {
+                        MessageBox.Show("Có lỗi khi tạo hóa đơn.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+
+                       
+
+                       
                 }
                 else
                 {
@@ -586,13 +603,97 @@ namespace WindowsFormsApp1
         }
         private void dataGridView2_DataError(object sender, DataGridViewDataErrorEventArgs e)
         {
-
             MessageBox.Show("Có lỗi xảy ra khi xử lý dữ liệu trong DataGridView.");
             e.Cancel = true;
         }
 
         private void label13_Click(object sender, EventArgs e)
         {
+
+        }
+
+        private void textBox6_TextChanged(object sender, EventArgs e)
+        {
+           
+        }
+        string tenKhachHangMoi;
+        private void ThemKhachHangMoi()
+        {
+            string sdt = textBox6.Text.Trim();
+         
+            int newCustomerId = capNhatId2();
+            KhachHangDTO newCustomer = new KhachHangDTO
+            {
+                maKh=newCustomerId,
+                sdtKh=sdt,
+                tenKh=tenKhachHangMoi,
+             
+              
+            };
+            bool success = khachHangBUS.themKhachHang(newCustomer);
+            if (success)
+            {
+                MessageBox.Show("Thêm khách hàng mới thành công."); 
+            }
+            else
+            {
+                MessageBox.Show("Thêm khách hàng mới không thành công. Xem lại thông tin và thử lại.");
+            }
+        }
+        NhanVienBUS nvBus=new NhanVienBUS();
+      
+
+        private void textBox6_Leave(object sender, EventArgs e)
+        {
+            list = khachHangBUS.getList();
+            string sdt = textBox6.Text;
+            khachHangDTO = khachHangBUS.findSdt(sdt);
+            if (khachHangDTO != null)
+            {
+                string hovaten = $"{khachHangDTO.maKh}-{khachHangDTO.tenKh}";
+                textBox7.Text = hovaten;
+            }
+            if(textBox7.Text=="0-")
+            {
+                MessageBox.Show("Khách hàng không tồn tại. Bạn có muốn thêm khách hàng mới?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    KhachHangThanhToanGUI newCustomerForm = new KhachHangThanhToanGUI();
+
+                    if (newCustomerForm.ShowDialog() == DialogResult.OK)
+                    {
+                        tenKhachHangMoi = newCustomerForm.TenKhachHang;
+                        ThemKhachHangMoi();
+                        khachHangDTO = khachHangBUS.findSdt(sdt);
+                        if(khachHangDTO != null)
+                        {
+                            string hovatenMoi = $"{khachHangDTO.maKh}-{tenKhachHangMoi}";
+                            textBox7.Text = hovatenMoi;
+                        }
+                  
+                       
+                    }
+                
+            }
+        }
+        public int capNhatId2()
+        {
+            int maKH = 0;
+            int somakh = khachHangBUS.getList().Count + 1;
+            if (somakh >= 10)
+            {
+                maKH = somakh;
+            }
+            else
+            {
+                maKH = int.Parse("0" + somakh.ToString());
+            }
+
+            return maKH;
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            string keyword = textBox1.Text;
+            dataGridView1.DataSource = bus.TimKiemSanPham(keyword);
 
         }
     }

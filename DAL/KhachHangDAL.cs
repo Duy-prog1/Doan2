@@ -15,11 +15,9 @@ namespace DAL
         {
             SqlDataAdapter da = new SqlDataAdapter("SELECT maKH, tenKH, sdt, tichDiem, tongChi FROM khachHang ", _conn);
             DataTable dtKhachHang = new DataTable();
-
             da.Fill(dtKhachHang);
             return dtKhachHang;
         }
-
         public List<KhachHangDTO> getList()
         {
             try
@@ -75,6 +73,75 @@ namespace DAL
             return dtKhachHang;
         }
 
+        public KhachHangDTO findSdtA(string sdt)
+        {
+            try
+            {
+                _conn.Open();
+                string sql = string.Format("select * from khachHang where sdt = '{0}'",sdt);
+                KhachHangDTO kh = new KhachHangDTO();
+                SqlCommand cmd = new SqlCommand(sql, _conn);
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {                  
+                    kh.maKh = reader.GetInt32(reader.GetOrdinal("maKH"));
+                    kh.tenKh = reader["tenKH"].ToString();
+                    kh.sdtKh = reader["sdt"].ToString();
+                    kh.tichDiem = reader.GetInt32(reader.GetOrdinal("tichDiem"));
+                    kh.tongChi = reader.GetDouble(reader.GetOrdinal("tongChi"));
+                }
+
+                reader.Close();
+                _conn.Close();
+                return kh;
+
+            }
+            catch (SqlException ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+
+            return null;
+        }
+        public KhachHangDTO findSdt(string sdt)
+        {
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(_conn.ConnectionString))
+                {
+                    connection.Open();
+                    string sql = "SELECT * FROM khachHang WHERE sdt = @sdt";
+                    KhachHangDTO kh = new KhachHangDTO();
+
+                    using (SqlCommand cmd = new SqlCommand(sql, connection))
+                    {
+                        cmd.Parameters.AddWithValue("@sdt", sdt);
+
+                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                kh.maKh = reader.GetInt32(reader.GetOrdinal("maKH"));
+                                kh.tenKh = reader["tenKH"].ToString();
+                                kh.sdtKh = reader["sdt"].ToString();
+                                kh.tichDiem = reader.GetInt32(reader.GetOrdinal("tichDiem"));
+                                kh.tongChi = reader.GetDouble(reader.GetOrdinal("tongChi"));
+                            }
+                        }
+                    }
+
+                    return kh;
+                }
+            }
+            catch (SqlException ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+
+            return null;
+        }
+
         public bool suakhachHang(KhachHangDTO kh)
         {
             try
@@ -104,6 +171,39 @@ namespace DAL
             catch (Exception e)
             {
                 // Handle the exception here or log it.
+            }
+            finally
+            {
+                // Dong ket noi
+                _conn.Close();
+            }
+
+            return false;
+        }
+
+        public bool themKhachHang(KhachHangDTO tv)
+        {
+            try
+            {
+                // Ket noi
+                _conn.Open();
+
+
+                string SQL =
+                string.Format("INSERT INTO khachHang( maKH, tenKH, sdt, tichDiem, tongChi) VALUES ('{0}', N'{1}', '{2}', '{3}', '{4}')"
+                , tv.maKh, tv.tenKh,tv.sdtKh, tv.tichDiem, tv.tongChi);
+
+                // Command (mặc định command type = text nên chúng ta khỏi fải làm gì nhiều).
+                SqlCommand cmd = new SqlCommand(SQL, _conn);
+
+                // Query và kiểm tra
+                if (cmd.ExecuteNonQuery() > 0)
+                    return true;
+
+            }
+            catch (Exception e)
+            {
+
             }
             finally
             {

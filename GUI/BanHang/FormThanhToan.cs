@@ -139,44 +139,13 @@ namespace WindowsFormsApp1
             hd += "</body></html>";
             webBrowser1.DocumentText = hd;
         }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-
-        }
-
         // In hóa đơn
-        /* private void button1_Click(object sender, EventArgs e)
-         {
-             PrintDocument printDocument = new PrintDocument();
-             printDocument.PrintPage += new PrintPageEventHandler(PrintDocument_PrintPage);
-             PrintDialog printDialog = new PrintDialog();
-             printDialog.Document = printDocument;
-             if (printDialog.ShowDialog() == DialogResult.OK)
-             {
-                 printDocument.Print();
-             }
-         }*/
-        /* private void PrintDocument_PrintPage(object sender, PrintPageEventArgs e)
-         {
-             StringReader reader = new StringReader(richTextBox1.Text);
-             float yPos = 0f;
-             int count = 0;
-             float leftMargin = e.MarginBounds.Left;
-             float topMargin = e.MarginBounds.Top;
-             string line = null;
-             while (count < e.MarginBounds.Height / 12 && ((line = reader.ReadLine()) != null))
-             {
-                 yPos = topMargin + count * 12;
-                 e.Graphics.DrawString(line, new Font("Arial", 10), Brushes.Black, leftMargin, yPos, new StringFormat());
-                 count++;
-             }
-             if (line != null)
-                 e.HasMorePages = true;
-             else
-                 e.HasMorePages = false;
-             reader.Close();
-         }*/
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            webBrowser1.Print();
+            this.Close();
+        }
+       
     }
 
 
