@@ -127,8 +127,6 @@ namespace WindowsFormsApp1
         }
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-
-
             if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
             {
                 DataGridViewRow selectedRow = dataGridView1.Rows[e.RowIndex];
@@ -261,6 +259,7 @@ namespace WindowsFormsApp1
 
 
         // thành tiến sau khi giảm giá
+        decimal tienKhuyenMai;
 
         private void tienSauKhuyenMai(DataRow row)
         {
@@ -268,7 +267,7 @@ namespace WindowsFormsApp1
             if (selectedRow != null)
             {
                 DataTable dtKhuyenMai = bus.getkhuyenMaiBanhang();
-                decimal tienKhuyenMai;
+             
                 decimal donViGiam = Convert.ToDecimal(selectedRow["donViGiam"].ToString());
                 decimal giaTriGiam = Convert.ToDecimal(selectedRow["giaTriGiam"].ToString());
                 decimal tienThongKeGiaTriGiam = 0;
@@ -538,7 +537,8 @@ namespace WindowsFormsApp1
                                         maSP = maSP,
                                         giaBan = (float)giaBan,
                                         soLuong = soLuong,
-                                        tongTien = (float)(soLuong * giaBan),
+                                        tongTien = (float)(soLuong * giaBan)-(float)tienKhuyenMai,
+                                      //  tongTien = (float)(soLuong * giaBan),
                                         maKM = maKM
                                     };
 

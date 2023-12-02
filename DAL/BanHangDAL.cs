@@ -73,7 +73,7 @@ namespace DAL
             try
             {
                 _conn.Open();
-                string SQL = "SELECT maSP, tenSP, giaBan, maLoai, img FROM sanPham WHERE tenSP LIKE @Keyword";
+                string SQL = "SELECT maSP, tenSP, giaBan, maLoai,soLuong FROM sanPham WHERE tenSP LIKE @Keyword";
                 SqlCommand command = new SqlCommand(SQL, _conn);
                 command.Parameters.AddWithValue("@Keyword", "%" + keyword + "%");
                 da = new SqlDataAdapter(command);
