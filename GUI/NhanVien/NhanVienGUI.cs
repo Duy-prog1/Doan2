@@ -46,7 +46,7 @@ namespace WindowsFormsApp1
                 DataGridViewRow row = dataGridView1.Rows[e.RowIndex];
                 string ID = row.Cells["cotMaNv"].Value.ToString();
                 // Xóa
-                if (nvBus.xoaNhanVien(ID)&&tkBus.xoaNhanVien(ID))
+                if (nvBus.xoaNhanVien(ID))
                 {
                     MessageBox.Show("Xóa thành công");
                     dataGridView1.DataSource = nvBus.getNhanVien(); // get thanh vien
