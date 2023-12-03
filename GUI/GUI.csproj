@@ -140,6 +140,12 @@
     <Compile Include="BanHang\KhachHangThanhToanGUI.Designer.cs">
       <DependentUpon>KhachHangThanhToanGUI.cs</DependentUpon>
     </Compile>
+    <Compile Include="Home\HomeGUI.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Home\HomeGUI.Designer.cs">
+      <DependentUpon>HomeGUI.cs</DependentUpon>
+    </Compile>
     <Compile Include="Khachhang\KhachhangGUI.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -270,6 +276,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="BanHang\KhachHangThanhToanGUI.resx">
       <DependentUpon>KhachHangThanhToanGUI.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Home\HomeGUI.resx">
+      <DependentUpon>HomeGUI.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Khachhang\KhachhangGUI.resx">
       <DependentUpon>KhachhangGUI.cs</DependentUpon>
@@ -441,6 +450,17 @@
     <None Include="Resources\khuyenmai.png" />
     <None Include="Resources\nhaphang.png" />
     <None Include="Resources\khachhang.png" />
+    <None Include="Resources\Home.png" />
+    <None Include="Resources\Home1.png" />
+    <None Include="Resources\Home-icon.png" />
+    <None Include="Resources\ic_icon.png" />
+    <None Include="Resources\Home-icon1.png" />
+    <None Include="Resources\home-ic.png" />
+    <None Include="Resources\home-ic1.png" />
+    <None Include="Resources\home-ic %282%29.png" />
+    <None Include="Resources\ic-home.png" />
+    <None Include="Resources\ic-logo.png" />
+    <None Include="Resources\logo-ic.png" />
     <Content Include="Resources\reload.png" />
     <None Include="Resources\taikhoan-icon1.png" />
     <None Include="Resources\taikhoan-icon.png" />

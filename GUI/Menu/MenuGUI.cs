@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WindowsFormsApp1.Home;
 using WindowsFormsApp1.NhapHang;
 using WindowsFormsApp1.SanPham;
 using WindowsFormsApp1.TaiKhoan;
@@ -17,6 +18,7 @@ namespace WindowsFormsApp1
 {
     public partial class MenuGUI : Form
     {
+        private HomeGUI HomeGUI = null;
         private BanHangGUI banHangGUI=null;
         private SanPhamGUI sanPhamGUI = null;
         private NhanVienGUI nhanVienGUI=null;
@@ -41,10 +43,12 @@ namespace WindowsFormsApp1
             }
             if (maQuyen == 0)
             {
+                HomeGUI = new HomeGUI();
                 taiKhoanGUI =new TaiKhoanGUI();
             }
             if (maQuyen == 2) //ban hang
             {
+                HomeGUI = new HomeGUI();
                 banHangGUI = new BanHangGUI();
                 sanPhamGUI = new SanPhamGUI();
                 khachhangGUI = new KhachhangGUI();
@@ -52,11 +56,13 @@ namespace WindowsFormsApp1
             }
             else if (maQuyen == 3)
             {
+                HomeGUI = new HomeGUI();
                 khuyenMaiGUI = new KhuyenMaiGUI();
                 phieuNhapGUI = new PhieuNhapGUI();
             }
             else
             {
+                HomeGUI = new HomeGUI();
                 banHangGUI = new BanHangGUI();
                 sanPhamGUI = new SanPhamGUI();
                 nhanVienGUI = new NhanVienGUI();
@@ -82,6 +88,7 @@ namespace WindowsFormsApp1
 
         private void MenuGUI_Load(object sender, EventArgs e)
         {
+
             // Thêm tất cả các PictureBox vào danh sách và gán sự kiện Click
             if (maQuyen == 1) //QuanLy
             {
@@ -118,7 +125,7 @@ namespace WindowsFormsApp1
             {
                 pictureBox.Click += PictureBox_Click;
             }
-          
+            ShowChildForm(HomeGUI, tableLayoutPanel5);
             //ShowChildForm(childFormToShow, tableLayoutPanel5);
         }
         private void ShowChildForm(Form childForm, Control container)
@@ -158,12 +165,11 @@ namespace WindowsFormsApp1
             if (clickedPictureBox == pictureBox1) 
             {
                 childFormToShow = banHangGUI;
-              
             }
             //Home
             else if (clickedPictureBox == pictureBox2)
             {
-                childFormToShow = (Form)tableLayoutPanel5.Controls[0];
+                childFormToShow = HomeGUI;
             }
             //San Pham
             else if (clickedPictureBox == pictureBox3)
