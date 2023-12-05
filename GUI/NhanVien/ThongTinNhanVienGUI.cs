@@ -217,7 +217,7 @@ namespace WindowsFormsApp1
             // Kiểm tra trùng lặp với danh sách nhân viên
             foreach (NhanVienDTO nv in nvBus.getList())
             {
-                if (phoneNumber.Equals(nv.sdtNv.Trim()))
+                if (phoneNumber.Equals(nv.sdtNv.Trim())&&nv.trangThai==true)
                 {
                     lbSdt.Text = "Số điện thoại bị trùng!";
                     return false;

@@ -140,7 +140,8 @@ namespace WindowsFormsApp1
                     lbGioiTinh.Text = "";
                     lbChucVu.Text = "";
                     this.nvDto.tenNv = tbTenNv.Text;
-                    this.nvDto.ngaySinhNv = xuLyNgaySinh();
+                    //this.nvDto.ngaySinhNv = xuLyNgaySinh();
+                    this.nvDto.ngaySinhNv = ChuyenDoiNgay1(mtbNgaySinh.Text);
                     this.nvDto.sdtNv = tbSdt.Text.Trim();
                     this.nvDto.chucVu = xuLychucVu();
                     this.nvDto.diaChiNv = rtbDiaChi.Text;
@@ -236,7 +237,7 @@ namespace WindowsFormsApp1
             // Kiểm tra trùng lặp với danh sách nhân viên
             foreach (NhanVienDTO nv in nvBus.getList())
             {
-                if (phoneNumber.Equals(nv.sdtNv.Trim()))
+                if (phoneNumber.Equals(nv.sdtNv.Trim()) && nv.trangThai == true)
                 {
                     if (!tbMaNv.Text.Equals(nv.maNv))
                     {
@@ -281,6 +282,18 @@ namespace WindowsFormsApp1
             if (DateTime.TryParseExact(ngayTruoc, "dd/MM/yyyy h:mm:ss tt", null, System.Globalization.DateTimeStyles.None, out DateTime ngayGioSau))
             {
                 return ngayGioSau.ToString("yyyy-MM-dd HH:mm:ss");
+            }
+            else
+            {
+                return "Ngày giờ không hợp lệ";
+            }
+        }
+
+        public string ChuyenDoiNgay1(string ngayTruoc)
+        {
+            if (DateTime.TryParseExact(ngayTruoc, "dd/MM/yyyy", null, System.Globalization.DateTimeStyles.None, out DateTime ngayGioSau))
+            {
+                return ngayGioSau.ToString("yyyy-MM-dd");
             }
             else
             {
