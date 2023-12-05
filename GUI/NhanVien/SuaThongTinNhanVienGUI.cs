@@ -258,6 +258,7 @@ namespace WindowsFormsApp1
             lbSdt.Text = "";
             return true;
         }
+        /*
         public string xuLyNgaySinh()
         {
             string ngaySinh = "";
@@ -288,7 +289,7 @@ namespace WindowsFormsApp1
                 return "Ngày giờ không hợp lệ";
             }
         }
-
+        */
         public string ChuyenDoiNgay1(string ngayTruoc)
         {
             if (DateTime.TryParseExact(ngayTruoc, "dd/MM/yyyy", null, System.Globalization.DateTimeStyles.None, out DateTime ngayGioSau))
